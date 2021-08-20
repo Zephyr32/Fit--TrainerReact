@@ -2,9 +2,10 @@ import {
   drawerWidth,
   transition,
   container,
-} from "assets/jss/material-dashboard-react.js";
+} from "../../material-dashboard-react";
+import { makeStyles, Theme } from "@material-ui/core";
 
-const appStyle = (theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   wrapper: {
     position: "relative",
     top: "0",
@@ -31,6 +32,6 @@ const appStyle = (theme) => ({
   map: {
     marginTop: "70px",
   },
-});
+}));
 
-export default appStyle;
+export default useStyles;

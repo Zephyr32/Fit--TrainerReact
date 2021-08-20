@@ -15,13 +15,15 @@ export const CardAvatar: FC<CardAvatarPropsTypes> = (
 ) => {
   const s = useStyles();
   const { children, className, plain, profile, ...rest } = props;
-  const cardAvatarClasses = classNames({
+  let cardAvatarClasses = classNames({
     [s.cardAvatar]: true,
     [s.cardAvatarProfile]: profile,
     [s.cardAvatarPlain]: plain,
   });
-  className &&
-    cardAvatarClasses.concat(" " + classNames({ [className]: className }));
+  if (className)
+    cardAvatarClasses = cardAvatarClasses.concat(
+      " " + classNames({ [className]: className })
+    );
   return (
     <div className={cardAvatarClasses} {...rest}>
       {children}

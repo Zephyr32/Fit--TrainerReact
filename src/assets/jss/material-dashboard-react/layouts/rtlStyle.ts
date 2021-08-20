@@ -2,9 +2,10 @@ import {
   drawerWidth,
   transition,
   container,
-} from "assets/jss/material-dashboard-react.js";
+} from "../../material-dashboard-react";
+import { Theme } from "@material-ui/core";
 
-const appStyle = (theme) => ({
+const appStyle = (theme: Theme) => ({
   wrapper: {
     position: "relative",
     top: "0",

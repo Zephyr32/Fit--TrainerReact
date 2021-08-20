@@ -3,9 +3,10 @@ import {
   whiteColor,
   grayColor,
   hexToRgb,
-} from "src/assets/jss/material-dashboard-react.js";
+} from "../../material-dashboard-react";
+import { makeStyles } from "@material-ui/core";
 
-const iconsStyle = {
+const useStyles = makeStyles({
   iframe: {
     width: "100%",
     height: "500px",
@@ -41,6 +42,6 @@ const iconsStyle = {
       lineHeight: "1",
     },
   },
-};
+});
 
-export default iconsStyle;
+export default useStyles;

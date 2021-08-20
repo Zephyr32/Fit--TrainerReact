@@ -5,19 +5,19 @@ import PropTypes from "prop-types";
 // nodejs library that concatenates classes
 import classnames from "classnames";
 
-import imagine1 from "assets/img/sidebar-1.jpg";
-import imagine2 from "assets/img/sidebar-2.jpg";
-import imagine3 from "assets/img/sidebar-3.jpg";
-import imagine4 from "assets/img/sidebar-4.jpg";
+import imagine1 from "../../assets/img/sidebar-1.jpg";
+import imagine2 from "../../assets/img/sidebar-2.jpg";
+import imagine3 from "../../assets/img/sidebar-3.jpg";
+import imagine4 from "../../assets/img/sidebar-4.jpg";
 
 import { RegularButton } from "../CustomButtons/Button";
-
+export type FixedPluginColor = "purple" | "blue" | "green" | "orange" | "red";
 export interface FixedPluginPropsTypes {
   bgImage?: string;
   handleFixedClick?: (...args: any[]) => any;
   rtlActive?: boolean;
   fixedClasses?: string;
-  bgColor?: "purple" | "blue" | "green" | "orange" | "red";
+  bgColor?: FixedPluginColor;
   handleColorClick?: (...args: any[]) => any;
   handleImageClick?: (...args: any[]) => any;
 }
@@ -32,11 +32,7 @@ export const FixedPlugin: FC<FixedPluginPropsTypes> = (
     props.handleFixedClick && props.handleFixedClick();
   };
   return (
-    <div
-      className={classnames("fixed-plugin", {
-        "rtl-fixed-plugin": props.rtlActive,
-      })}
-    >
+    <div className={classnames("fixed-plugin")}>
       <div id="fixedPluginClasses" className={props.fixedClasses}>
         <div onClick={handleClick}>
           <i className="fa fa-cog fa-2x" />
@@ -157,7 +153,6 @@ export const FixedPlugin: FC<FixedPluginPropsTypes> = (
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
                 target="_blank"
                 fullWidth
-                regularSize={"lg"}
               >
                 Download free!
               </RegularButton>
@@ -176,16 +171,17 @@ export const FixedPlugin: FC<FixedPluginPropsTypes> = (
             </div>
           </li>
           <li className="button-container">
-            <RegularButton
-              regularColor="info"
-              fullWidth
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-              target="_blank"
-            >
-              Documentation
-            </RegularButton>
+            <div className="button-container">
+              <RegularButton
+                regularColor="info"
+                fullWidth
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                target="_blank"
+              >
+                Documentation
+              </RegularButton>
+            </div>
           </li>
-          <li className="adjustments-line" />
         </ul>
       </div>
     </div>

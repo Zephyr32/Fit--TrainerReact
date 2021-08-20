@@ -12,13 +12,15 @@ export interface CardBodyPropsTypes {
 export const CardBody: FC<CardBodyPropsTypes> = (props: CardBodyPropsTypes) => {
   const s = useStyles();
   const { className, children, plain, profile, ...rest } = props;
-  const cardBodyClasses = classNames({
+  let cardBodyClasses = classNames({
     [s.cardBody]: true,
     [s.cardBodyPlain]: plain,
     [s.cardBodyProfile]: profile,
   });
-  className &&
-    cardBodyClasses.concat(" " + classNames({ [className]: className }));
+  if (className)
+    cardBodyClasses = cardBodyClasses.concat(
+      " " + classNames({ [className]: className })
+    );
   return (
     <div className={cardBodyClasses} {...rest}>
       {children}

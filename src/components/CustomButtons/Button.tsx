@@ -1,8 +1,5 @@
 import React, { FC, ReactNode } from "react";
-// nodejs library that concatenates classes
 import classNames from "classnames";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
 
 import Button, { ButtonProps } from "@material-ui/core/Button";
 
@@ -42,7 +39,7 @@ export const RegularButton: FC<RegularButtonPropsTypes> = (props) => {
     muiClasses,
     ...rest
   } = props;
-  const btnClasses = classNames({
+  let btnClasses = classNames({
     [s.button]: true,
     [s.round]: round,
     [s.disabled]: disabled,
@@ -51,11 +48,19 @@ export const RegularButton: FC<RegularButtonPropsTypes> = (props) => {
     [s.link]: link,
     [s.justIcon]: justIcon,
   });
-  regularSize &&
-    btnClasses.concat(" " + classNames({ [s[regularSize]]: regularSize }));
-  regularColor &&
-    btnClasses.concat(" " + classNames({ [s[regularColor]]: regularColor }));
-  className && btnClasses.concat(" " + classNames({ [className]: className }));
+  if (regularSize)
+    btnClasses = btnClasses.concat(
+      " " + classNames({ [s[regularSize]]: regularSize })
+    );
+  if (regularColor)
+    btnClasses = btnClasses.concat(
+      " " + classNames({ [s[regularColor]]: regularColor })
+    );
+
+  if (className)
+    btnClasses = btnClasses.concat(
+      " " + classNames({ [className]: className })
+    );
 
   return (
     <Button {...rest} classes={muiClasses} className={btnClasses}>

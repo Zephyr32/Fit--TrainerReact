@@ -4,8 +4,9 @@ import {
   successColor,
   whiteColor,
 } from "../../material-dashboard-react";
+import { makeStyles } from "@material-ui/core";
 
-const dashboardStyle = {
+const useStyles = makeStyles({
   successText: {
     color: successColor[0],
   },
@@ -77,6 +78,6 @@ const dashboardStyle = {
       lineHeight: "1",
     },
   },
-};
+});
 
-export default dashboardStyle;
+export default useStyles;

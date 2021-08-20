@@ -1,20 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-import { makeStyles } from "@material-ui/core/styles";
-import routes from "routes.js";
+import routes from "../routes/routes";
 
-import styles from "src/assets/jss/material-dashboard-react/layouts/adminStyle.js";
+import useStyles from "../assets/jss/material-dashboard-react/layouts/adminStyle";
 
-import bgImage from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/reactlogo.png";
-import Sidebar from "../components/Sidebar/Sidebar";
-import FixedPlugin from "../components/FixedPlugin/FixedPlugin";
-import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbars/Navbar";
-
-let ps;
+import bgImage from "../assets/img/sidebar-2.jpg";
+import logo from "../assets/img/reactlogo.png";
+import { Sidebar, SidebarColor } from "../components/Sidebar/Sidebar";
+import {
+  FixedPlugin,
+  FixedPluginColor,
+} from "../components/FixedPlugin/FixedPlugin";
+import { Footer } from "../components/Footer/Footer";
+import { Header } from "../components/Navbars/Navbar";
 
 const switchRoutes = (
   <Switch>
@@ -34,22 +34,19 @@ const switchRoutes = (
   </Switch>
 );
 
-const useStyles = makeStyles(styles);
-
-export const Admin = ({ ...rest }) => {
+export const Admin: FC = ({ ...rest }) => {
   // styles
   const classes = useStyles();
-  // ref to help us initialize PerfectScrollbar on windows devices
-  const mainPanel = React.createRef();
-  // states and functions
+  const mainPanel = React.createRef<HTMLDivElement>();
+  let ps: PerfectScrollbar | null = null;
   const [image, setImage] = React.useState(bgImage);
   const [color, setColor] = React.useState("blue");
   const [fixedClasses, setFixedClasses] = React.useState("dropdown show");
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const handleImageClick = (image) => {
+  const handleImageClick = (image: any) => {
     setImage(image);
   };
-  const handleColorClick = (color) => {
+  const handleColorClick = (color: any) => {
     setColor(color);
   };
   const handleFixedClick = () => {
@@ -72,7 +69,7 @@ export const Admin = ({ ...rest }) => {
   };
   // initialize and destroy the PerfectScrollbar plugin
   React.useEffect(() => {
-    if (navigator.platform.indexOf("Win") > -1) {
+    if (navigator.platform.indexOf("Win") > -1 && mainPanel.current !== null) {
       ps = new PerfectScrollbar(mainPanel.current, {
         suppressScrollX: true,
         suppressScrollY: false,
@@ -82,7 +79,7 @@ export const Admin = ({ ...rest }) => {
     window.addEventListener("resize", resizeFunction);
     // Specify how to clean up after this effect:
     return function cleanup() {
-      if (navigator.platform.indexOf("Win") > -1) {
+      if (navigator.platform.indexOf("Win") > -1 && ps !== null) {
         ps.destroy();
       }
       window.removeEventListener("resize", resizeFunction);
@@ -97,11 +94,11 @@ export const Admin = ({ ...rest }) => {
         image={image}
         handleDrawerToggle={handleDrawerToggle}
         open={mobileOpen}
-        color={color}
+        bgColor={color as SidebarColor}
         {...rest}
       />
       <div className={classes.mainPanel} ref={mainPanel}>
-        <Navbar
+        <Header
           routes={routes}
           handleDrawerToggle={handleDrawerToggle}
           {...rest}
@@ -118,7 +115,7 @@ export const Admin = ({ ...rest }) => {
         <FixedPlugin
           handleImageClick={handleImageClick}
           handleColorClick={handleColorClick}
-          bgColor={color}
+          bgColor={color as FixedPluginColor}
           bgImage={image}
           handleFixedClick={handleFixedClick}
           fixedClasses={fixedClasses}

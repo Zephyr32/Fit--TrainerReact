@@ -16,8 +16,7 @@ export interface CustomTabsPropsType {
   headerColor?: ColorType;
   title?: string;
   tabs: Array<CustomTabPropsType>;
-  rtlActive: boolean;
-  plainTabs: boolean;
+  plainTabs?: boolean;
 }
 
 export const CustomTabs: FC<CustomTabsPropsType> = (
@@ -28,10 +27,9 @@ export const CustomTabs: FC<CustomTabsPropsType> = (
     setValue(value);
   };
   const s = useStyles();
-  const { headerColor, plainTabs, tabs, title, rtlActive } = props;
+  const { headerColor, plainTabs, tabs, title } = props;
   const cardTitle = classNames({
     [s.cardTitle]: true,
-    [s.cardTitleRTL]: rtlActive,
   });
   return (
     <Card plain={plainTabs}>

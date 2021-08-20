@@ -1,20 +1,18 @@
 /*eslint-disable*/
 import React from "react";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
-// @material-ui/core components
+
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import AddAlert from "@material-ui/icons/AddAlert";
+import { Card } from "../../components/Card/Card";
+import { CardHeader } from "../../components/Card/CardHeader";
+import { CardBody } from "../../components/Card/CardBody";
+import { GridContainer } from "../../components/Grid/GridContainer";
+import { GridItem } from "../../components/Grid/GridItem";
+import { SnackbarContent } from "../../components/Snackbar/SnackbarContent";
+import { RegularButton } from "../../components/CustomButtons/Button";
+import { Snackbar } from "../../components/Snackbar/Snackbar";
 // core components
-import GridItem from "src/components/Grid/GridItem.js";
-import GridContainer from "src/components/Grid/GridContainer.js";
-import Button from "src/components/CustomButtons/Button.js";
-import SnackbarContent from "src/components/Snackbar/SnackbarContent.js";
-import Snackbar from "src/components/Snackbar/Snackbar.js";
-import Card from "src/components/Card/Card.js";
-import CardHeader from "src/components/Card/CardHeader.js";
-import CardBody from "src/components/Card/CardBody.js";
 
 const styles = {
   cardCategoryWhite: {
@@ -60,13 +58,13 @@ export const Notifications = () => {
     // Specify how to clean up after this effect:
     return function cleanup() {
       // to stop the warning of calling setState of unmounted component
-      let id = window.setTimeout(null, 0);
+      let id = window.setTimeout(() => {}, 0);
       while (id--) {
         window.clearTimeout(id);
       }
     };
   });
-  const showNotification = (place) => {
+  const showNotification = (place: string) => {
     switch (place) {
       case "tl":
         if (!tl) {
@@ -224,13 +222,13 @@ export const Notifications = () => {
           <GridItem xs={12} sm={12} md={10} lg={8}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={4}>
-                <Button
+                <RegularButton
                   fullWidth
                   color="primary"
                   onClick={() => showNotification("tl")}
                 >
                   Top Left
-                </Button>
+                </RegularButton>
                 <Snackbar
                   place="tl"
                   color="info"
@@ -242,13 +240,13 @@ export const Notifications = () => {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
-                <Button
+                <RegularButton
                   fullWidth
                   color="primary"
                   onClick={() => showNotification("tc")}
                 >
                   Top Center
-                </Button>
+                </RegularButton>
                 <Snackbar
                   place="tc"
                   color="info"
@@ -260,13 +258,13 @@ export const Notifications = () => {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
-                <Button
+                <RegularButton
                   fullWidth
                   color="primary"
                   onClick={() => showNotification("tr")}
                 >
                   Top Right
-                </Button>
+                </RegularButton>
                 <Snackbar
                   place="tr"
                   color="info"
@@ -284,13 +282,13 @@ export const Notifications = () => {
           <GridItem xs={12} sm={12} md={10} lg={8}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={4}>
-                <Button
+                <RegularButton
                   fullWidth
                   color="primary"
                   onClick={() => showNotification("bl")}
                 >
                   Bottom Left
-                </Button>
+                </RegularButton>
                 <Snackbar
                   place="bl"
                   color="info"
@@ -302,13 +300,13 @@ export const Notifications = () => {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
-                <Button
+                <RegularButton
                   fullWidth
                   color="primary"
                   onClick={() => showNotification("bc")}
                 >
                   Bottom Center
-                </Button>
+                </RegularButton>
                 <Snackbar
                   place="bc"
                   color="info"
@@ -320,13 +318,13 @@ export const Notifications = () => {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={4}>
-                <Button
+                <RegularButton
                   fullWidth
                   color="primary"
                   onClick={() => showNotification("br")}
                 >
                   Bottom Right
-                </Button>
+                </RegularButton>
                 <Snackbar
                   place="br"
                   color="info"

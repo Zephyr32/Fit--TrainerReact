@@ -1,14 +1,12 @@
 import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// core components
-import GridItem from "src/components/Grid/GridItem.js";
-import GridContainer from "src/components/Grid/GridContainer.js";
-import Table from "src/components/Table/Table.js";
-import Card from "src/components/Card/Card.js";
-import CardHeader from "src/components/Card/CardHeader.js";
-import CardBody from "src/components/Card/CardBody.js";
-
+import { GridContainer } from "../../components/Grid/GridContainer";
+import { GridItem } from "../../components/Grid/GridItem";
+import { Card } from "../../components/Card/Card";
+import { CardHeader } from "../../components/Card/CardHeader";
+import { CardBody } from "../../components/Card/CardBody";
+import { CustomTable } from "../../components/Table/Table";
 const styles = {
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
@@ -54,7 +52,7 @@ export const TableList = () => {
             </p>
           </CardHeader>
           <CardBody>
-            <Table
+            <CustomTable
               tableHeaderColor="primary"
               tableHead={["Name", "Country", "City", "Salary"]}
               tableData={[
@@ -80,7 +78,7 @@ export const TableList = () => {
             </p>
           </CardHeader>
           <CardBody>
-            <Table
+            <CustomTable
               tableHeaderColor="primary"
               tableHead={["ID", "Name", "Country", "City", "Salary"]}
               tableData={[

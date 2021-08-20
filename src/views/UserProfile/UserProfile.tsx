@@ -1,19 +1,17 @@
 import React from "react";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
-// core components
-import GridItem from "src/components/Grid/GridItem.js";
-import GridContainer from "src/components/Grid/GridContainer.js";
-import CustomInput from "src/components/CustomInput/CustomInput.js";
-import Button from "src/components/CustomButtons/Button.js";
-import Card from "src/components/Card/Card.js";
-import CardHeader from "src/components/Card/CardHeader.js";
-import CardAvatar from "src/components/Card/CardAvatar.js";
-import CardBody from "src/components/Card/CardBody.js";
-import CardFooter from "src/components/Card/CardFooter.js";
 
-import avatar from "assets/img/faces/marc.jpg";
+import avatar from "../../assets/img/faces/marc.jpg";
+import { GridContainer } from "../../components/Grid/GridContainer";
+import { GridItem } from "../../components/Grid/GridItem";
+import { Card } from "../../components/Card/Card";
+import { CardHeader } from "../../components/Card/CardHeader";
+import { CardBody } from "../../components/Card/CardBody";
+import { CardFooter } from "../../components/Card/CardFooter";
+import { CustomInput } from "../../components/CustomInput/CustomInput";
+import { CardAvatar } from "../../components/Card/CardAvatar";
+import { RegularButton } from "../../components/CustomButtons/Button";
+import useStyles from "../../assets/jss/material-dashboard-react/views/dashboardStyle";
 
 const styles = {
   cardCategoryWhite: {
@@ -33,8 +31,6 @@ const styles = {
     textDecoration: "none",
   },
 };
-
-const useStyles = makeStyles(styles);
 
 export const UserProfile = () => {
   const classes = useStyles();
@@ -147,7 +143,7 @@ export const UserProfile = () => {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="primary">Update Profile</Button>
+              <RegularButton color="primary">Update Profile</RegularButton>
             </CardFooter>
           </Card>
         </GridItem>
@@ -161,14 +157,14 @@ export const UserProfile = () => {
             <CardBody profile>
               <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
               <h4 className={classes.cardTitle}>Alec Thompson</h4>
-              <p className={classes.description}>
+              <p>
                 Don{"'"}t be scared of the truth because we need to restart the
                 human foundation in truth And I love you like Kanye loves Kanye
                 I love Rick Owens’ bed design but the back is...
               </p>
-              <Button color="primary" round>
+              <RegularButton color="primary" round>
                 Follow
-              </Button>
+              </RegularButton>
             </CardBody>
           </Card>
         </GridItem>

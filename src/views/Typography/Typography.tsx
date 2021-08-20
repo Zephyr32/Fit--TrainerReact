@@ -1,19 +1,17 @@
 import React from "react";
-// @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// core components
-import Quote from "src/components/Typography/Quote.js";
-import Muted from "src/components/Typography/Muted.js";
-import Primary from "src/components/Typography/Primary.js";
-import Info from "src/components/Typography/Info.js";
-import Success from "src/components/Typography/Success.js";
-import Warning from "src/components/Typography/Warning.js";
-import Danger from "src/components/Typography/Danger";
-import Card from "src/components/Card/Card.js";
-import CardHeader from "src/components/Card/CardHeader.js";
-import CardBody from "src/components/Card/CardBody.js";
+import { Card } from "../../components/Card/Card";
+import { CardHeader } from "../../components/Card/CardHeader";
+import { CardBody } from "../../components/Card/CardBody";
+import { Quote } from "../../components/Typography/Quote";
+import { Muted } from "../../components/Typography/Muted";
+import { Primary } from "../../components/Typography/Primary";
+import { Info } from "../../components/Typography/Info";
+import { Success } from "../../components/Typography/Success";
+import { Warning } from "../../components/Typography/Warning";
+import { Danger } from "../../components/Typography/Danger";
 
-const styles = {
+const useStyles = makeStyles({
   typo: {
     paddingLeft: "25%",
     marginBottom: "40px",
@@ -48,9 +46,7 @@ const styles = {
     marginBottom: "3px",
     textDecoration: "none",
   },
-};
-
-const useStyles = makeStyles(styles);
+});
 
 export const TypographyPage = () => {
   const classes = useStyles();

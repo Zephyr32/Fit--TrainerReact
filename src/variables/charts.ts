@@ -1,21 +1,35 @@
 // ##############################
 // // // javascript library for creating charts
 // #############################
-import { Interpolation, Svg } from "chartist";
+import {
+  IBarChartOptions,
+  ILineChartOptions,
+  Interpolation,
+  IResponsiveOptionTuple,
+  Svg,
+} from "chartist";
+import { ChartitGraphLineProps, ChartitGraphProps } from "react-chartist";
 
 // ##############################
 // // // variables used to create animation on charts
 // #############################
-const delays = 80,
+export const delays = 80,
   durations = 500;
-const delays2 = 80,
+export const delays2 = 80,
   durations2 = 500;
 
 // ##############################
 // // // Daily Sales
 // #############################
 
-const dailySalesChart = {
+export interface ChartsTypesProps<T> extends Partial<ChartitGraphProps> {
+  data: any;
+  options?: T;
+  responseOptions?: Array<IResponsiveOptionTuple<T>>;
+  animation: any;
+}
+
+export const dailySalesChart: ChartsTypesProps<ILineChartOptions> = {
   data: {
     labels: ["M", "T", "W", "T", "F", "S", "S"],
     series: [[12, 17, 7, 17, 23, 18, 38]],
@@ -69,7 +83,7 @@ const dailySalesChart = {
 // // // Email Subscriptions
 // #############################
 
-const emailsSubscriptionChart = {
+export const emailsSubscriptionChart: ChartsTypesProps<IBarChartOptions> = {
   data: {
     labels: [
       "Jan",
@@ -132,7 +146,7 @@ const emailsSubscriptionChart = {
 // // // Completed Tasks
 // #############################
 
-const completedTasksChart = {
+export const completedTasksChart: ChartsTypesProps<ILineChartOptions> = {
   data: {
     labels: ["12am", "3pm", "6pm", "9pm", "12pm", "3am", "6am", "9am"],
     series: [[230, 750, 450, 300, 280, 240, 200, 190]],
@@ -179,10 +193,4 @@ const completedTasksChart = {
       }
     },
   },
-};
-
-module.exports = {
-  dailySalesChart,
-  emailsSubscriptionChart,
-  completedTasksChart,
 };

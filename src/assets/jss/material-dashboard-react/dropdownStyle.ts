@@ -7,12 +7,7 @@ import {
   primaryColor,
   whiteColor,
 } from "../material-dashboard-react";
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  ThemeOptions,
-} from "@material-ui/core";
+import { Theme } from "@material-ui/core";
 
 const dropdownStyle = (theme: Theme) => ({
   buttonLink: {

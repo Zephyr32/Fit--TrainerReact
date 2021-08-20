@@ -1,13 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-// core components
-import styles from "assets/jss/material-dashboard-react/components/typographyStyle.js";
+import React, { FC } from "react";
+import useStyles from "../../assets/jss/material-dashboard-react/components/typographyStyle";
 
-const useStyles = makeStyles(styles);
-
-export const Danger = (props) => {
+export const Danger: FC = (props) => {
   const classes = useStyles();
   const { children } = props;
   return (
@@ -15,8 +9,4 @@ export const Danger = (props) => {
       {children}
     </div>
   );
-};
-
-Danger.propTypes = {
-  children: PropTypes.node,
 };

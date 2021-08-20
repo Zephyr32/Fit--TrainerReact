@@ -15,15 +15,17 @@ export interface CardFooterPropsTypes {
 export const CardFooter: FC<CardFooterPropsTypes> = (props) => {
   const s = useStyles();
   const { className, children, plain, profile, stats, chart, ...rest } = props;
-  const cardFooterClasses = classNames({
+  let cardFooterClasses = classNames({
     [s.cardFooter]: true,
     [s.cardFooterPlain]: plain,
     [s.cardFooterProfile]: profile,
     [s.cardFooterStats]: stats,
     [s.cardFooterChart]: chart,
   });
-  className &&
-    cardFooterClasses.concat(" " + classNames({ [className]: className }));
+  if (className)
+    cardFooterClasses = cardFooterClasses.concat(
+      " " + classNames({ [className]: className })
+    );
   return (
     <div className={cardFooterClasses} {...rest}>
       {children}

@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import ChartistGraph from "react-chartist";
-import { makeStyles } from "@material-ui/core/styles";
+import ChartistGraph, { ChartitGraphProps } from "react-chartist";
 import Icon from "@material-ui/core/Icon";
 import {
   Store,
@@ -17,15 +16,15 @@ import {
 } from "@material-ui/icons";
 // core components
 
-import { bugs, website, server } from "src/variables/general.js";
+import { bugs, website, server } from "../../variables/general";
 
 import {
   dailySalesChart,
   emailsSubscriptionChart,
   completedTasksChart,
-} from "src/variables/charts.js";
+} from "../../variables/charts";
 
-import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
+import useStyles from "../../assets/jss/material-dashboard-react/views/dashboardStyle";
 import { GridContainer } from "../../components/Grid/GridContainer";
 import { GridItem } from "../../components/Grid/GridItem";
 import { Card } from "../../components/Card/Card";
@@ -36,9 +35,7 @@ import { Danger } from "../../components/Typography/Danger";
 import { CardBody } from "../../components/Card/CardBody";
 import { CustomTabs } from "../../components/CustomTabs/CustomTabs";
 import { Tasks } from "../../components/Tasks/Tasks";
-import { Table } from "@material-ui/core";
-
-const useStyles = makeStyles(styles);
+import { CustomTable } from "../../components/Table/Table";
 
 export const Dashboard: FC = () => {
   const classes = useStyles();
@@ -245,7 +242,7 @@ export const Dashboard: FC = () => {
               </p>
             </CardHeader>
             <CardBody>
-              <Table
+              <CustomTable
                 tableHeaderColor="warning"
                 tableHead={["ID", "Name", "Salary", "Country"]}
                 tableData={[

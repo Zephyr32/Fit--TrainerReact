@@ -1,20 +1,17 @@
 import React from "react";
-// @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
 import Close from "@material-ui/icons/Close";
 import Check from "@material-ui/icons/Check";
-// core components
-import GridItem from "src/components/Grid/GridItem.js";
-import GridContainer from "src/components/Grid/GridContainer.js";
-import Danger from "src/components/Typography/Danger";
-import Success from "src/components/Typography/Success.js";
-import Button from "src/components/CustomButtons/Button.js";
-import Card from "src/components/Card/Card.js";
-import CardHeader from "src/components/Card/CardHeader.js";
-import CardBody from "src/components/Card/CardBody.js";
+import { GridContainer } from "../../components/Grid/GridContainer";
+import { GridItem } from "../../components/Grid/GridItem";
+import { Card } from "../../components/Card/Card";
+import { CardHeader } from "../../components/Card/CardHeader";
+import { CardBody } from "../../components/Card/CardBody";
+import { Danger } from "../../components/Typography/Danger";
+import { Success } from "../../components/Typography/Success";
+import { RegularButton } from "../../components/CustomButtons/Button";
 
-const styles = {
+const useStyles = makeStyles({
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
       color: "rgba(255,255,255,.62)",
@@ -79,9 +76,7 @@ const styles = {
   center: {
     textAlign: "center",
   },
-};
-
-const useStyles = makeStyles(styles);
+});
 
 export const UpgradeToPro = () => {
   const classes = useStyles();
@@ -187,18 +182,18 @@ export const UpgradeToPro = () => {
                   <tr>
                     <td />
                     <td className={classes.center}>
-                      <Button round disabled>
+                      <RegularButton round disabled>
                         Current Version
-                      </Button>
+                      </RegularButton>
                     </td>
                     <td className={classes.center}>
-                      <Button
+                      <RegularButton
                         round
-                        color="danger"
+                        regularColor="danger"
                         href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
                       >
                         Upgrade to Pro
-                      </Button>
+                      </RegularButton>
                     </td>
                   </tr>
                 </tbody>

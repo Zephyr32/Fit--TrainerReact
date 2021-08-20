@@ -35,13 +35,21 @@ export const CardHeader: FC<CardHeaderPropsTypes> = (
   props: CardHeaderPropsTypes
 ) => {
   const s = useStyles();
-  const { className, children, color, plain, stats, icon, ...rest } = props;
+  const {
+    className,
+    children,
+    color = "warning",
+    plain,
+    stats,
+    icon,
+    ...rest
+  } = props;
   let colorHeader = undefined;
   if (color) {
     colorHeader = getCardHeaderClassName(color);
   }
 
-  const cardHeaderClasses = classNames({
+  let cardHeaderClasses = classNames({
     [s.cardHeader]: true,
     [s.cardHeaderPlain]: plain,
     [s.cardHeaderStats]: stats,
@@ -49,10 +57,14 @@ export const CardHeader: FC<CardHeaderPropsTypes> = (
   });
 
   if (color && colorHeader) {
-    cardHeaderClasses.concat(" " + classNames({ [s[colorHeader]]: color }));
+    cardHeaderClasses = cardHeaderClasses.concat(
+      " " + classNames({ [s[colorHeader]]: color })
+    );
   }
   if (className) {
-    cardHeaderClasses.concat(" " + classNames({ [className]: className }));
+    cardHeaderClasses = cardHeaderClasses.concat(
+      " " + classNames({ [className]: className })
+    );
   }
   return (
     <div className={cardHeaderClasses} {...rest}>
