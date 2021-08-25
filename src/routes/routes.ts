@@ -5,6 +5,7 @@ import {
   BubbleChart,
   Notifications,
   Unarchive,
+  Receipt,
 } from "@material-ui/icons";
 import { Dashboard as DashboardPage } from "../views/Dashboard/Dashboard";
 import { UserProfile } from "../views/UserProfile/UserProfile";
@@ -13,6 +14,8 @@ import { TypographyPage } from "../views/Typography/Typography";
 import { Icons } from "../views/Icons/Icons";
 import { Notifications as NotificationsPage } from "../views/Notifications/Notifications";
 import { UpgradeToPro } from "../views/UpgradeToPro/UpgradeToPro";
+import NewExercise from "../views/NewExercise/NewExercise";
+import EditExercise from "../views/EditExercises/EditExercises";
 const dashboardRoutes = [
   {
     path: "/dashboard",
@@ -47,6 +50,20 @@ const dashboardRoutes = [
     name: "Icons",
     icon: BubbleChart,
     component: Icons,
+    layout: "/admin",
+  },
+  {
+    path: "/newExercise",
+    name: "New Exercise",
+    icon: Receipt,
+    component: NewExercise,
+    layout: "/admin",
+  },
+  {
+    path: "/EditExercise",
+    name: "Edit Exercise",
+    icon: Receipt,
+    component: EditExercise,
     layout: "/admin",
   },
   {

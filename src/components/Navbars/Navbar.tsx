@@ -35,7 +35,6 @@ export const Header: FC<HeaderPropsTypes> = (props) => {
     <AppBar className={classes.appBar + " " + appBarClasses}>
       <Toolbar className={classes.container}>
         <div className={classes.flex}>
-          {/* Here we create navbar brand, based on route name */}
           <RegularButton
             regularColor="transparent"
             href="#"
