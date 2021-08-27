@@ -33,7 +33,7 @@ const styles = {
 };
 
 export const UserProfile = () => {
-  const classes = useStyles();
+  const classes = useStyles(styles);
   return (
     <div>
       <GridContainer>
@@ -143,7 +143,9 @@ export const UserProfile = () => {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <RegularButton color="primary">Update Profile</RegularButton>
+              <RegularButton regularColor="primary">
+                Update Profile
+              </RegularButton>
             </CardFooter>
           </Card>
         </GridItem>
@@ -162,7 +164,7 @@ export const UserProfile = () => {
                 human foundation in truth And I love you like Kanye loves Kanye
                 I love Rick Owens’ bed design but the back is...
               </p>
-              <RegularButton color="primary" round>
+              <RegularButton regularColor="primary" round>
                 Follow
               </RegularButton>
             </CardBody>

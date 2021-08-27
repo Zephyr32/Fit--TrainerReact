@@ -7,11 +7,11 @@ const styles = {
     padding: "0 15px !important",
   },
 };
-export interface GridItem extends GridProps {}
+export interface GridItemPropsTypes extends GridProps {}
 
 const useStyles = makeStyles(styles);
 
-export const GridItem: FC<GridItem> = (props) => {
+export const GridItem: FC<GridItemPropsTypes> = (props) => {
   const classes = useStyles();
   const { children, ...rest } = props;
   return (

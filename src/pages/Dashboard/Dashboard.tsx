@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import ChartistGraph, { ChartitGraphProps } from "react-chartist";
+import ChartistGraph from "react-chartist";
 import Icon from "@material-ui/core/Icon";
 import {
   Store,

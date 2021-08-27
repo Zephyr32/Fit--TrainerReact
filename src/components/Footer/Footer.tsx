@@ -37,6 +37,7 @@ export const Footer: FC = (props) => {
             <a
               href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
               target="_blank"
+              rel="noreferrer"
               className={classes.a}
             >
               Fuck you Tim

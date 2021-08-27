@@ -1,15 +1,14 @@
 import React, { FC, ReactNode } from "react";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import Select from "@material-ui/core/Select";
+import Select, { SelectProps } from "@material-ui/core/Select";
 import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
 import useStyles from "../../assets/jss/material-dashboard-react/components/customInputStyle";
 import classNames from "classnames";
 import { MenuItem } from "@material-ui/core";
 
-export interface CustomSelectPropTypes {
+export interface CustomSelectPropTypes extends SelectProps {
   labelText?: ReactNode;
   labelProps?: any;
   id?: string;
@@ -17,7 +16,6 @@ export interface CustomSelectPropTypes {
   formControlProps?: any;
   error?: boolean;
   success?: boolean;
-  handleChange?: any;
   selectOptions: {
     name: string;
     value: any;
@@ -36,7 +34,6 @@ export const CustomSelect: FC<CustomSelectPropTypes> = (
     inputProps,
     error,
     success,
-    handleChange,
     selectOptions,
   } = props;
 
@@ -44,21 +41,9 @@ export const CustomSelect: FC<CustomSelectPropTypes> = (
     [" " + s.labelRootError]: error,
     [" " + s.labelRootSuccess]: success && !error,
   });
-  const underlineClasses = classNames({
-    [s.underlineError]: error,
-    [s.underlineSuccess]: success && !error,
-    [s.underline]: true,
-  });
   const marginTop = classNames({
     [s.marginTop]: labelText === undefined,
   });
-  let newInputProps = {
-    maxLength:
-      inputProps && inputProps.maxLength ? inputProps.maxLength : undefined,
-    minLength:
-      inputProps && inputProps.minLength ? inputProps.minLength : undefined,
-    step: inputProps && inputProps.step ? inputProps.step : undefined,
-  };
   return (
     <FormControl
       {...formControlProps}
@@ -77,14 +62,16 @@ export const CustomSelect: FC<CustomSelectPropTypes> = (
         classes={{
           root: marginTop,
           disabled: s.disabled,
-          underline: underlineClasses,
         }}
         id={id}
         {...inputProps}
-        onChange={handleChange}
       >
-        {selectOptions.map((option) => {
-          return <MenuItem value={option.value}>{option.name}</MenuItem>;
+        {selectOptions.map((option, index) => {
+          return (
+            <MenuItem value={option.value} key={index}>
+              {option.name}
+            </MenuItem>
+          );
         })}
       </Select>
       {error ? (

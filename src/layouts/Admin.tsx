@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
@@ -38,10 +38,10 @@ export const Admin: FC = ({ ...rest }) => {
   // styles
   const classes = useStyles();
   const mainPanel = React.createRef<HTMLDivElement>();
-  let ps: PerfectScrollbar | null = null;
+  const [ps, setPs] = useState<PerfectScrollbar | null>(null);
   const [image, setImage] = React.useState(bgImage);
   const [color, setColor] = React.useState("blue");
-  const [fixedClasses, setFixedClasses] = React.useState("dropdown show");
+  const [fixedClasses, setFixedClasses] = React.useState("dropdown");
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleImageClick = (image: any) => {
     setImage(image);
@@ -70,10 +70,12 @@ export const Admin: FC = ({ ...rest }) => {
   // initialize and destroy the PerfectScrollbar plugin
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1 && mainPanel.current !== null) {
-      ps = new PerfectScrollbar(mainPanel.current, {
-        suppressScrollX: true,
-        suppressScrollY: false,
-      });
+      setPs(
+        new PerfectScrollbar(mainPanel.current, {
+          suppressScrollX: true,
+          suppressScrollY: false,
+        })
+      );
       document.body.style.overflow = "hidden";
     }
     window.addEventListener("resize", resizeFunction);
@@ -81,10 +83,11 @@ export const Admin: FC = ({ ...rest }) => {
     return function cleanup() {
       if (navigator.platform.indexOf("Win") > -1 && ps !== null) {
         ps.destroy();
+        setPs(null);
       }
       window.removeEventListener("resize", resizeFunction);
     };
-  }, [mainPanel]);
+  }, [mainPanel, ps]);
   return (
     <div className={classes.wrapper}>
       <Sidebar
@@ -103,7 +106,6 @@ export const Admin: FC = ({ ...rest }) => {
           handleDrawerToggle={handleDrawerToggle}
           {...rest}
         />
-        {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
         {getRoute() ? (
           <div className={classes.content}>
             <div className={classes.container}>{switchRoutes}</div>

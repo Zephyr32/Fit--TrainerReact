@@ -8,7 +8,7 @@ import {
   IResponsiveOptionTuple,
   Svg,
 } from "chartist";
-import { ChartitGraphLineProps, ChartitGraphProps } from "react-chartist";
+import { ChartitGraphProps } from "react-chartist";
 
 // ##############################
 // // // variables used to create animation on charts

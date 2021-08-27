@@ -1,4 +1,3 @@
-import dropdownStyle from "../dropdownStyle";
 import {
   blackColor,
   dangerColor,

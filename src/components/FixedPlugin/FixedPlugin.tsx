@@ -25,7 +25,7 @@ export interface FixedPluginPropsTypes {
 export const FixedPlugin: FC<FixedPluginPropsTypes> = (
   props: FixedPluginPropsTypes
 ) => {
-  const [classes, setClasses] = useState("dropdown show");
+  const [classes, setClasses] = useState("dropdown");
   const [bg_checked, setBg_checked] = useState(true);
   const [bgImage, setBgImage] = useState(props.bgImage);
   const handleClick = () => {

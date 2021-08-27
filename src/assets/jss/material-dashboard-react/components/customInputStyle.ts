@@ -5,7 +5,6 @@ import {
   primaryColor,
   successColor,
 } from "../../material-dashboard-react";
-import { createStyles } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({

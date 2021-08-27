@@ -78,11 +78,7 @@ export const Sidebar: FC<SidebarPropsTypes> = (props) => {
   );
   let brand = (
     <div className={classes.logo}>
-      <a
-        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-        className={classNames(classes.logoLink)}
-        target="_blank"
-      >
+      <a className={classNames(classes.logoLink)}>
         <div className={classes.logoImage}>
           <img src={logo} alt="logo" className={classes.img} />
         </div>
@@ -102,7 +98,7 @@ export const Sidebar: FC<SidebarPropsTypes> = (props) => {
           }}
           onClose={props.handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
         >
           {brand}

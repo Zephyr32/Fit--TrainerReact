@@ -9,7 +9,7 @@ import { CardFooter } from "../../components/Card/CardFooter";
 import { RegularButton } from "../../components/CustomButtons/Button";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { CustomSelect } from "../../components/CustomSelect/CustomSelect";
-import { MeasurementOptions } from "../../models/exercise";
+import { MeasurementOptions, MeasurementType } from "../../models/exercise";
 
 const NewExercise = () => {
   const classes = useStyles();
@@ -44,6 +44,9 @@ const NewExercise = () => {
                     selectOptions={MeasurementOptions}
                     formControlProps={{
                       fullWidth: true,
+                    }}
+                    inputProps={{
+                      value: MeasurementType.kilograms,
                     }}
                   />
                 </GridItem>
